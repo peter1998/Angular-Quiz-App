@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { QUESTIONS } from '../mock/questions';
 
 @Component({
   selector: 'app-home',
@@ -9,20 +10,20 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  questions = [
-    {
-      text: 'What is the capital of France?',
-      choices: ['Paris', 'London', 'Berlin', 'Madrid'],
-      answer: 'Paris',
-    },
-    // More questions...
-  ];
+  questions: any[] = [];
   selectedAnswers: any[] = [];
   results: any[] = [];
 
   constructor(private dialog: MatDialog, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.questions = this.getRandomQuestions(10);
+  }
+
+  getRandomQuestions(n: number): any[] {
+    const shuffledQuestions = QUESTIONS.sort(() => 0.5 - Math.random());
+    return shuffledQuestions.slice(0, n);
+  }
 
   selectAnswer(questionIndex: number, answer: string): void {
     this.selectedAnswers[questionIndex] = answer;
