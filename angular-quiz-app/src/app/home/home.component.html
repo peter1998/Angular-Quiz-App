@@ -1,0 +1,8 @@
+<div *ngFor="let question of questions; index as i">
+  <h2>{{ question.text }}</h2>
+  <div *ngFor="let choice of question.choices">
+    <button (click)="selectAnswer(i, choice)">{{ choice }}</button>
+  </div>
+</div>
+
+<button (click)="submitAnswers()">Submit</button>
