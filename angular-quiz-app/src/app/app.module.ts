@@ -10,9 +10,15 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { BidiModule } from '@angular/cdk/bidi';
 import { PortalModule } from '@angular/cdk/portal';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ScoreService } from './service/score.service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ConfirmationDialogComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ConfirmationDialogComponent,
+    NavbarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,7 +27,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     BidiModule,
     PortalModule,
   ],
-  providers: [],
+  providers: [ScoreService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

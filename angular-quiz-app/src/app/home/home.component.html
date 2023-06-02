@@ -1,8 +1,25 @@
-<div *ngFor="let question of questions; index as i">
-  <h2>{{ question.text }}</h2>
-  <div *ngFor="let choice of question.choices">
-    <button (click)="selectAnswer(i, choice)">{{ choice }}</button>
+<div class="container">
+  <div *ngIf="currentQuestionIndex < questions.length" class="question-card">
+    <h2 class="question">
+      {{ currentQuestionIndex + 1 }}. {{ questions[currentQuestionIndex].text }}
+    </h2>
+    <div *ngFor="let choice of questions[currentQuestionIndex].choices">
+      <button
+        class="option"
+        [class.selected]="selectedAnswers[currentQuestionIndex] === choice"
+        (click)="selectAnswer(currentQuestionIndex, choice)"
+      >
+        {{ choice }}
+      </button>
+    </div>
+    <p>{{ questions.length - currentQuestionIndex - 1 }} questions left</p>
+    <button class="submit-button" (click)="nextQuestion()">Next</button>
   </div>
+  <button
+    *ngIf="currentQuestionIndex === questions.length"
+    class="submit-button"
+    (click)="submitAnswers()"
+  >
+    Submit
+  </button>
 </div>
-
-<button (click)="submitAnswers()">Submit</button>

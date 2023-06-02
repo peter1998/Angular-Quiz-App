@@ -9,9 +9,3 @@ export class ScoreService {
     this.scoreSubject.next(score);
   }
 }
-
-// home.component.ts
-this.scoreService.setScore(score);
-
-// navbar.component.ts
-this.scoreService.score$.subscribe((score) => (this.score = score));
