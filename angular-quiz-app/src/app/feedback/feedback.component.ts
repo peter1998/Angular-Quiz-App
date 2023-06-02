@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ScoreService } from '../service/score.service';
 
 @Component({
   selector: 'app-feedback',
@@ -8,19 +9,17 @@ import { Router } from '@angular/router';
 })
 export class FeedbackComponent implements OnInit {
   score: number = 0;
-  totalQuestions: number = 5;
+  totalQuestions: number = 10;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private scoreService: ScoreService) {}
 
   ngOnInit(): void {
-    // Get the score from local storage
-    const score = localStorage.getItem('score');
-    this.score = score !== null ? Number(score) : 0;
+    this.scoreService.score$.subscribe((score) => (this.score = score));
   }
 
   restartQuiz(): void {
     // Clear the score and navigate back to home
-    localStorage.removeItem('score');
+    this.scoreService.setScore(0);
     this.router.navigate(['/']);
   }
 }
