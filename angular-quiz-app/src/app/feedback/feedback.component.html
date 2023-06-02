@@ -1,1 +1,6 @@
-<p>feedback works!</p>
+<div class="feedback-container">
+  <h1>Your Score: {{ score }} / {{ totalQuestions }}</h1>
+  <button mat-raised-button color="primary" (click)="restartQuiz()">
+    Restart Quiz
+  </button>
+</div>

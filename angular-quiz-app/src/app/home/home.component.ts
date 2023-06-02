@@ -38,6 +38,12 @@ export class HomeComponent implements OnInit {
           return question.answer === this.selectedAnswers[index];
         });
 
+        // Calculate the score as the number of correct answers
+        const score = this.results.filter((result) => result).length;
+
+        // Store the score in local storage
+        localStorage.setItem('score', score.toString());
+
         // Navigate to the feedback page
         this.router.navigate(['/feedback']);
       }

@@ -9,9 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { BidiModule } from '@angular/cdk/bidi';
 import { PortalModule } from '@angular/cdk/portal';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ConfirmationDialogComponent],
+  declarations: [AppComponent, HomeComponent, ConfirmationDialogComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
